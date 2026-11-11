@@ -51,6 +51,11 @@ Lower case tags are the built-in ones, listed below. A tag that starts with a ca
 component: `<Badge label="new"/>` calls the function above, and `<Counter/>` makes the class the first
 time it appears in that place and keeps that instance, so its state survives every update.
 
+Props reach a component by name, so write a function component's parameters type first: `def Badge(string
+label)` takes `label=`, while a parameter written the other way round, `def Badge(label: string)`, never
+becomes a prop and the tag fails at the call. A collection literal can't be written in a prop either:
+`<List names=["a", "b"]/>` is refused, so name the value on the line above and pass `names=people`.
+
 ## State, actions and bindings
 
 - `on:click=self.add` runs a method when the element is clicked. An element that runs an action is
