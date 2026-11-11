@@ -51,10 +51,10 @@ Lower case tags are the built-in ones, listed below. A tag that starts with a ca
 component: `<Badge label="new"/>` calls the function above, and `<Counter/>` makes the class the first
 time it appears in that place and keeps that instance, so its state survives every update.
 
-Props reach a component by name, so write a function component's parameters type first: `def Badge(string
-label)` takes `label=`, while a parameter written the other way round, `def Badge(label: string)`, never
-becomes a prop and the tag fails at the call. A collection literal can't be written in a prop either:
-`<List names=["a", "b"]/>` is refused, so name the value on the line above and pass `names=people`.
+Props reach a component by name, so a function component's parameters are written type first:
+`def Badge(string label)` takes `label=`. The other order is a syntax error, since OSL always writes the
+type before the name. A collection literal can't be written in a prop either: `<List names=["a", "b"]/>`
+is refused, so name the value on the line above and pass `names=people`.
 
 ## State, actions and bindings
 
@@ -186,8 +186,15 @@ Functions:
 own instance, so a name in a field stays theirs:
 
 ```osl
-app.UI("/", def() -> TodoList(), {title: "Todo"})
-app.UI("/about", def() ui.node ( return <text>hello</text> ))
+class Page (
+  def view() ui.node (
+    return <column pad=16><text>hello</text></column>
+  )
+)
+
+*serve.Router app = serve.new()
+app.UI("/", def() -> Page(), {title: "Page"})
+app.UI("/about", def() ui.node -> <text>hello</text>)
 ```
 
 The options are `title`, `maxConnections` (1000), `maxConnectionsPerAddress` (100) and
