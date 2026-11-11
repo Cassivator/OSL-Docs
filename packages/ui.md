@@ -141,7 +141,7 @@ Tags:
 | `<link href="...">` | A link, or an action when it has a handler. |
 | `<input type="text" placeholder="..."/>` | A text field; `bind=` or `value=`. `type` may be `text`, `password`, `email`, `number` or `search`. |
 | `<checkbox checked=.../>` | A checkbox; with `bind=` it toggles a field. |
-| `<image src="..." alt="..."/>` | An image. |
+| `<image src="..." alt="..."/>` | An image. A page draws whatever its browser can, svg included, from a path or a url; a window reads a local path as png, jpeg or gif. |
 | `<Component .../>` | Mounts a component, passing each prop as an input of that name. |
 
 Props:
