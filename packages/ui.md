@@ -94,17 +94,17 @@ turns with `direction=column` / `direction=row`.
 
 ## Styles
 
-Props can be gathered into a named style and spread with `..name`, which keeps a view readable:
+Props can be gathered into a named style and spread with `...name`, which keeps a view readable:
 
 ```osl
 style card = (pad: 20, radius: 14, bg: theme.card, border: 1, borderColor: theme.line)
 
-return <column ..card gap=12> <text>hello</text> </column>
+return <column ...card gap=12> <text>hello</text> </column>
 ```
 
 A style spans as many lines as you like, and one written inside a `view()` works too, so it can sit
 next to the tag it belongs to. Props on the tag itself win over the spread, and a spread has to be a
-style's name: `..(pad: 12)` is a syntax error.
+style's name: `...(pad: 12)` is a syntax error.
 
 Every prop also takes a state prefix, for how the element looks under that state: `hover:bg="#f0f3f6"`,
 `focus:borderColor=theme.accent`, `pressed:opacity=0.8`, `disabled:opacity=0.5`, and `narrow:` for a
